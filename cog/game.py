@@ -47,15 +47,19 @@ class Numeron(object):
                 eat += 1
             n += 1
         return eat, bite
+    
+    def mk_situation(self,situation1:list,situation2:list):
+        reply = self.player_1.mention + '\n'
+        for i in situation1:
+            reply += str(i['ans']) + '：' + str(i['eat']) + 'EAT-' + str(i['bite']) + 'BITE\n'
+        reply += '----------------------\n' + self.player_2.mention + '\n'
+        for v in situation2:
+            reply += str(v['ans']) + '：' + str(v['eat']) + 'EAT-' + str(v['bite']) + 'BITE\n'
+        return reply
 
-    def add_embed(self,atack_list,eat,bite):
-        """
-        試合状況を伝えるための分を作り返します
-        """
-        game_situation = self.now_player.name + '：' + str(atack_list[0]) + str(atack_list[1])\
-         + str(atack_list[2]) + '(' + str(eat) + 'EAT' + '-' + str(bite) + 'BITE' + ')' + '\n'
-        return game_situation
-
+    def rt_dict(self,answer,eat,bite):
+        d = {'ans': answer, 'eat': eat, 'bite': bite}
+        return d
 
 
 class GmaeCog(commands.Cog):
@@ -82,8 +86,6 @@ class GmaeCog(commands.Cog):
             reply_atack = opponent.name + "が先攻です"
             await ctx.send(reply_atack)
             numeron = Numeron(opponent,ctx.author)
-        #numeron = Numeron(ctx.author,opponent)
-        reply_embed = ''
         #このループで数字を決める
         while True:
             #個人チャットでの受け取りをできるようにする
@@ -145,8 +147,13 @@ class GmaeCog(commands.Cog):
                 eat, bite = numeron.eat_bite(atack_list,numeron.player_2_number)
             else:
                 eat, bite = numeron.eat_bite(atack_list,numeron.player_1_number) 
-            reply_embed += numeron.add_embed(atack_list,eat,bite)          
-            embed = discord.Embed(title='対戦状況',description=reply_embed,color=0x00FFFF)
+            result_dict = numeron.rt_dict(atack_num.content, eat, bite)
+            if numeron.now_player == numeron.player_1:
+                numeron.situation_p1.append(result_dict)
+            elif numeron.now_player == numeron.player_2:
+                numeron.situation_p2.append(result_dict)
+            send_reply = numeron.mk_situation(numeron.situation_p1,numeron.situation_p2)
+            embed = discord.Embed(title='対戦状況',description=send_reply,color=0x00FFFF)
             await ctx.send(embed=embed)
             if eat == 3:
                 finish_rep = numeron.now_player.name + 'の勝利です!'
