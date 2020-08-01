@@ -35,7 +35,6 @@ class SearchCog(commands.Cog):
         """
         wikipedia.set_lang('ja')
         if search_word == 'random':
-            msg = await ctx.send('時間がかかる場合がございます、少々お待ちください')
             random_word = wikipedia.random()
             title = f'検索結果：{random_word}'
             random_page = wikipedia.page(random_word)
@@ -45,7 +44,6 @@ class SearchCog(commands.Cog):
             wiki_word = urllib.parse.unquote(random_page.url[30:])
             responce_word += 'https://ja.wikipedia.org/wiki/' + wiki_word
             embed = discord.Embed(title=title, description=responce_word, color=0xc1661c)
-            await msg.delete()
             await ctx.send(embed=embed)
             return
 
