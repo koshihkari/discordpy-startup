@@ -44,5 +44,5 @@ class MyBot(commands.Bot):
 
 # MyBotのインスタンス化及び起動処理。
 if __name__ == '__main__':
-    bot = MyBot(command_prefix='==')
+    bot = MyBot(command_prefix='k.')
     bot.run(token)
