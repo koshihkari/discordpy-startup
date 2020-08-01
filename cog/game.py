@@ -177,35 +177,6 @@ class GmaeCog(commands.Cog):
 """
         await ctx.send(reply)
 
-    # @commands.command(aliases=["numb"])
-    # async def numeron_vs_bot(self,ctx,player_arg='000'):
-    #     """
-    #     制作中ですのよ
-    #     numeronをbotと対戦します。先攻はコマンド実行者です。
-    #     """
-    #     await ctx.send('準備中だよ')
-    #     #num_bot = Numeron(ctx.atuhot,self.bot.user)
-    #     l = [0,1,2,3,4,5,6,7,8,9]
-    #     cpu_number = random.sample(l,3)
-    #     await ctx.send(cpu_number) 
-        # while True:
-        #     break
-        #     await ctx.send('あなたの決める数字を送ってください')
-        #     def check(m):
-        #         if not m.content.isdecimal():
-        #             return False
-        #         return m.author == ctx.author and m.channel == ctx.channel
-        #     while True:
-        #         try:
-        #             str_num = await self.bot.wait_for("mesage",check=check,timeout=120.0)
-        #         except asyncio.TimeoutError:
-        #             await ctx.send('2分間適切な数字の入力がなかったのでゲームを終了します')
-        #         else:
-        #             if not num_bot.judge(str_num.content):
-        #                 continue
-        #             else:
-        #                 break
-            
 
 def setup(bot):
     bot.add_cog(GmaeCog(bot))
