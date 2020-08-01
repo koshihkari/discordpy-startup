@@ -6,22 +6,6 @@ import wikipedia
 import requests
 
 
-class Weather(object):
-    def weather_search(self,user_id):
-    #{user_id(int):weather_id(str)}
-        id_dict = {625161458145034270:'130010',677040897514536960:'120010',475916023690821642:'140020'}
-        url = 'http://weather.livedoor.com/forecast/webservice/json/v1?'
-        try:
-            query_params = {'city': id_dict[user_id]}
-        except KeyError:
-            return ['あなたの居住区は登録されていません','登録を希望する場合はこしひかりに連絡連絡～♪']
-        result_list = []
-        data = requests.get(url, params=query_params).json()
-        for weather in data['forecasts']:
-            result_list.append(weather['dateLabel'] + 'の天気：' + weather['telop'])
-        return result_list
-
-
 class SearchCog(commands.Cog):
 
     def __init__(self,bot):
@@ -81,24 +65,6 @@ class SearchCog(commands.Cog):
     
         #return responce_word
         embed = discord.Embed(title='検索結果', description=responce_word, color=0x00FFFF)
-        await ctx.send(embed=embed)
-
-    @commands.command()
-    async def weather(self,ctx):
-        """
-        コマンド実行者居住区の天気を知ることができます
-        """
-        weather = Weather()
-        result = weather.weather_search(ctx.author.id)
-        title_name = f'★{ctx.author.name}居住区の天気★'
-        word_num = len(result)
-        if word_num == 2:
-            reply = f'{result[0]}\n{result[1]}'
-        elif word_num == 3:
-            reply = f'{result[0]}\n{result[1]}\n{result[2]}'
-        else:
-            reply = 'エラーだよ！'
-        embed = discord.Embed(title=title_name,description=reply,color=0X00BFFF)
         await ctx.send(embed=embed)
 
 
