@@ -11,6 +11,8 @@ class Numeron(object):
         self.player_2 = player_2
         self.player_1_number = []
         self.player_2_number = []
+        self.situation_p1 = []
+        self.situation_p2 = []
         self.now_player = player_1
 
     def judge(self,number):
