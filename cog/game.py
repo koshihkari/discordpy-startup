@@ -58,11 +58,11 @@ class Numeron(object):
         for v in situation2:
             reply2 += str(v['ans']) + '：' + str(v['eat']) + 'EAT-' + str(v['bite']) + 'BITE\n'
         embed = discord.Embed(title='対戦状況',color=0x00FFFF)
-        embed.add_field(name=self.player_1.name,value=reply1)
+        embed.add_field(name=self.player_1.name,value=reply1,inline=False)
         if len(reply2) == 0:
-            embed.add_field(name=self.player_2.name,value='コールなし')
+            embed.add_field(name=self.player_2.name,value='コールなし',inline=False)
         else:
-            embed.add_field(name=self.player_2.name,value=reply2)
+            embed.add_field(name=self.player_2.name,value=reply2,inline=False)
         return embed
 
     def rt_dict(self,answer,eat,bite):
