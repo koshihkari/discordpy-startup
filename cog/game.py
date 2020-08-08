@@ -51,13 +51,19 @@ class Numeron(object):
         return eat, bite
     
     def mk_situation(self,situation1:list,situation2:list):
-        reply = self.player_1.mention + '\n'
+        reply1 = ''
+        reply2 = ''
         for i in situation1:
-            reply += str(i['ans']) + '：' + str(i['eat']) + 'EAT-' + str(i['bite']) + 'BITE\n'
-        reply += '----------------------\n' + self.player_2.mention + '\n'
+            reply1 += str(i['ans']) + '：' + str(i['eat']) + 'EAT-' + str(i['bite']) + 'BITE\n'
         for v in situation2:
-            reply += str(v['ans']) + '：' + str(v['eat']) + 'EAT-' + str(v['bite']) + 'BITE\n'
-        return reply
+            reply2 += str(v['ans']) + '：' + str(v['eat']) + 'EAT-' + str(v['bite']) + 'BITE\n'
+        embed = discord.Embed(title='対戦状況',color=0x00FFFF)
+        embed.add_field(name=self.player_1.name,value=reply1)
+        if len(reply2) == 0:
+            embed.add_field(name=self.player_2.name,value='コールなし')
+        else:
+            embed.add_field(name=self.player_2.name,value=reply2)
+        return embed
 
     def rt_dict(self,answer,eat,bite):
         d = {'ans': answer, 'eat': eat, 'bite': bite}
@@ -154,8 +160,7 @@ class GmaeCog(commands.Cog):
                 numeron.situation_p1.append(result_dict)
             elif numeron.now_player == numeron.player_2:
                 numeron.situation_p2.append(result_dict)
-            send_reply = numeron.mk_situation(numeron.situation_p1,numeron.situation_p2)
-            embed = discord.Embed(title='対戦状況',description=send_reply,color=0x00FFFF)
+            embed = numeron.mk_situation(numeron.situation_p1,numeron.situation_p2)
             await ctx.send(embed=embed)
             if eat == 3:
                 finish_rep = numeron.now_player.name + 'の勝利です!'
