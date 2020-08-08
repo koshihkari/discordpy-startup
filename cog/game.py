@@ -143,7 +143,11 @@ class GmaeCog(commands.Cog):
             #攻めの値の決定
             def check(m):
                 return m.author == numeron.now_player and m.channel == ctx.channel
-            atack_num = await self.bot.wait_for('message',check=check)
+            try:
+                atack_num = await self.bot.wait_for('message',check=check,timeout=180.0)
+            except asyncio.TimeoutError:
+                await ctx.send('3分間も放置しやがって！終わるわよ')
+                return
             if atack_num.content == 'end':
                 await ctx.send('ゲームを終了します。')
                 return
