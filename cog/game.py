@@ -5,7 +5,7 @@ import discord
 from discord.ext import commands
 
 
-OWN_ID = 668825221377294347
+OWN_ID = 720137311186059275
 
 class Numeron(object):
     def __init__(self,player_1,player_2):
