@@ -122,14 +122,14 @@ class GmaeCog(commands.Cog):
                 return
         random_number = random.randint(1,2)
         if opponent.id == OWN_ID:
-            await ctx.send(f'{ctx.author.name}が先攻でっすー！')
+            await ctx.send(f'{ctx.author.name}が先攻っすー！')
             numeron = Numeron(ctx.author,opponent)
         elif random_number == 1:
-            reply_atack = ctx.author.name + "が先攻でっすー！"
+            reply_atack = ctx.author.name + "が先攻っすー！"
             await ctx.send(reply_atack)
             numeron = Numeron(ctx.author,opponent)
         else:
-            reply_atack = opponent.name + "が先攻でっすー！"
+            reply_atack = opponent.name + "が先攻っすー！"
             await ctx.send(reply_atack)
             numeron = Numeron(opponent,ctx.author)
         #このループで数字を決める
