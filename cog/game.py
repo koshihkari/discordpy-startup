@@ -90,7 +90,7 @@ class Numeron(object):
             reply1 += str(i['ans']) + '：' + str(i['eat']) + 'EAT-' + str(i['bite']) + 'BITE\n'
         for v in situation2:
             reply2 += str(v['ans']) + '：' + str(v['eat']) + 'EAT-' + str(v['bite']) + 'BITE\n'
-        embed = discord.Embed(title='対戦状況',color=0x00FFFF)
+        embed = discord.Embed(title='対戦状況っすー！',color=0x00FFFF)
         embed.add_field(name=self.player_1.name,value=reply1,inline=False)
         if len(reply2) == 0:
             embed.add_field(name=self.player_2.name,value='コールなし',inline=False)
@@ -111,25 +111,25 @@ class GmaeCog(commands.Cog):
     @commands.command(aliases=["num"])
     async def numeron(self,ctx,opponent:discord.Member):
         """
-        メンションした相手とnumeronで対戦します。先攻はランダムでbotが選びます。
+        メンションした相手とnumeronで対戦しまっすー！先攻はランダムでbotが選びまっすー！
         """
         if ctx.channel == ctx.author.dm_channel:
-            await ctx.send('DMではなくサーバーのチャンネルでコマンドを実行してください')
+            await ctx.send('DMではなくサーバーのチャンネルでコマンドを実行してっすー！')
             return
         if opponent.bot:
             if opponent.id != OWN_ID:
-                await ctx.send(f'{self.bot.user.name}以外のbotをメンションしないでください')
+                await ctx.send(f'{self.bot.user.name}以外のbotをメンションしないでっすー！')
                 return
         random_number = random.randint(1,2)
         if opponent.id == OWN_ID:
-            await ctx.send(f'{ctx.author.name}が先攻です')
+            await ctx.send(f'{ctx.author.name}が先攻でっすー！')
             numeron = Numeron(ctx.author,opponent)
         elif random_number == 1:
-            reply_atack = ctx.author.name + "が先攻です"
+            reply_atack = ctx.author.name + "が先攻でっすー！"
             await ctx.send(reply_atack)
             numeron = Numeron(ctx.author,opponent)
         else:
-            reply_atack = opponent.name + "が先攻です"
+            reply_atack = opponent.name + "が先攻でっすー！"
             await ctx.send(reply_atack)
             numeron = Numeron(opponent,ctx.author)
         #このループで数字を決める
@@ -165,7 +165,7 @@ class GmaeCog(commands.Cog):
                     try:
                         str_num1 = await self.bot.wait_for('message',check=check_player,timeout=120.0)
                     except asyncio.TimeoutError:
-                        await ctx.send('2分間の無操作によりゲームを終了します')
+                        await ctx.send('2分間の無操作によりゲームを終了しまっすー！')
                         return
                     if not numeron.judge(str_num1.content):
                         continue
@@ -179,7 +179,7 @@ class GmaeCog(commands.Cog):
                     try:
                         str_num2 = await self.bot.wait_for('message',check=check_opponent,timeout=120.0)
                     except asyncio.TimeoutError:
-                        await ctx.send('2分間の無操作によりゲームを終了します')
+                        await ctx.send('2分間の無操作によりゲームを終了するっすー！')
                         return
                     if not numeron.judge(str_num2.content):
                         continue
@@ -189,7 +189,7 @@ class GmaeCog(commands.Cog):
                 break
 
 
-        turn_rep = numeron.now_player.mention + 'の番です'
+        turn_rep = numeron.now_player.mention + 'の番っすー！'
         await ctx.send(turn_rep)
         n = 1
 
@@ -209,7 +209,7 @@ class GmaeCog(commands.Cog):
                     await ctx.send('3分間も放置しやがって！終わるわよ')
                     return
                 if atack_num.content == 'end':
-                    await ctx.send('ゲームを終了します。')
+                    await ctx.send('ゲームを終了するっすー！')
                     return
                 #numeron.judgeを活用してatack_numをリスト化する
                 atack_list = numeron.judge(atack_num.content)
@@ -238,7 +238,7 @@ class GmaeCog(commands.Cog):
                 embed = numeron.mk_situation(numeron.situation_p1,numeron.situation_p2)
                 await ctx.send(embed=embed)
             if eat == 3:
-                finish_rep = numeron.now_player.name + 'の勝利です!'
+                finish_rep = numeron.now_player.name + 'の勝ちっすー！'
                 str_p1_number = ''.join(map(str, numeron.player_1_number))
                 str_p2_number = ''.join(map(str, numeron.player_2_number))
                 tell_answer = numeron.player_1.name + ": " + str_p1_number + ', ' + numeron.player_2.name + ": " + str_p2_number
@@ -253,14 +253,14 @@ class GmaeCog(commands.Cog):
             if numeron.now_player.bot:
                 pass
             else:
-                turn_rep = numeron.now_player.mention + 'の番です'
+                turn_rep = numeron.now_player.mention + 'の番っすー！'
                 await ctx.send(turn_rep)
             n += 1
 
     @commands.command(aliases=["nr"])
     async def nrule(self,ctx):
         """
-        numeronの簡易的なルール説明をします。
+        numeronの簡易的なルール説明をしまっすー！
         詳しく知りたい方はwikiコマンドを使用してください。
         """
         reply = """
