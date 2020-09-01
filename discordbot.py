@@ -8,7 +8,6 @@ import discord
 from discord.ext import commands
 
 
-CHANNEL_ID = 739024546312486963
 token = os.environ['DISCORD_BOT_TOKEN']
 
 # 読み込むコグの名前を格納しておく。
@@ -39,15 +38,6 @@ class MyBot(commands.Bot):
         print(self.user.name)
         print(self.user.id)
         print('-----')
-        channel = bot.get_channel(CHANNEL_ID)
-        message = """
-        free dynoの復活だぜよ
-        また今月も550時間よろしくな
-        """
-        embed = discord.Embed(title='通知',description=message,color=discord.Color.red())
-        await channel.send(embed=embed)
-
-
 
 
 # MyBotのインスタンス化及び起動処理。
