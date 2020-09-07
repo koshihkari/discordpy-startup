@@ -14,6 +14,7 @@ token = os.environ['DISCORD_BOT_TOKEN']
 INITIAL_EXTENSIONS = [
     'cog.search',
     'cog.game'
+    'cog.sonota'
     ]
 
 # クラスの定義。ClientのサブクラスであるBotクラスを継承。
