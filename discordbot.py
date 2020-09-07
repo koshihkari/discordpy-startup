@@ -13,7 +13,7 @@ token = os.environ['DISCORD_BOT_TOKEN']
 # 読み込むコグの名前を格納しておく。
 INITIAL_EXTENSIONS = [
     'cog.search',
-    'cog.game'
+    'cog.game',
     'cog.sonota'
     ]
 
