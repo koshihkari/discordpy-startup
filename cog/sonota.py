@@ -62,7 +62,7 @@ class Sonota(commands.Cog):
     def __init__(self,bot):
         self.bot = bot
     @commands.command()
-    async def tenki(self,ctx):
+    async def weather(self,ctx):
         global timeout
         weather_search = WeatherSearch()
         week_date = weather_search.search_weather(timeout)
