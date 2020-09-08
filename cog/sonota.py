@@ -49,10 +49,10 @@ class WeatherSearch():
     def wrong(self):
         message = """
         時間を空けてもう一度実行しなおしてください
-    以下が失敗の原因と考えられます
-    ・情報の取得に失敗
-    ・連続の実行を確認
-    このメッセージが何度も確認される場合はこしひかりまで連絡をお願いします
+以下が失敗の原因と考えられます
+・情報の取得に失敗
+・連続の実行を確認
+このメッセージが何度も確認される場合はこしひかりまで連絡をお願いします
         """
         embed = discord.Embed(title='コマンドの実行に失敗しました',description=message,color=discord.Color.red())
         return embed
