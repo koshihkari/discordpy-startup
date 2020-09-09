@@ -111,7 +111,7 @@ class GmaeCog(commands.Cog):
     @commands.command(aliases=["num"])
     async def numeron(self,ctx,opponent:discord.Member):
         """
-        メンションした相手とnumeronで対戦しまっすー！先攻はランダムでbotが選びまっすー！
+        メンションした相手とnumeronで対戦します
         """
         if ctx.channel == ctx.author.dm_channel:
             await ctx.send('DMではなくサーバーのチャンネルでコマンドを実行してっすー！')
@@ -260,7 +260,7 @@ class GmaeCog(commands.Cog):
     @commands.command(aliases=["nr"])
     async def nrule(self,ctx):
         """
-        numeronの簡易的なルール説明をしまっすー！
+        numeronのルール説明をします
         詳しく知りたい方はwikiコマンドを使用してください。
         """
         reply = """
