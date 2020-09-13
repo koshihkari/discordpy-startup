@@ -24,7 +24,7 @@ class Toaru(object):
         except ValueError:
             embed = self.miss()
             return embed
-        if assigment_value > 20:
+        if detail > 20 or want > 515 or not assigment_value in self.base_value:
             embed = self.miss()
             return embed
         for value in self.base_value:
@@ -87,6 +87,7 @@ class Toaru(object):
         description = """
         これらを適しているか確認をしてください
         ・値が数字でない
+        ・wantに515より大きい値を与えている
         ・適切な数字でない(コインの場合、一度の交換で5個覚醒結晶が交換されるため)
         ・(欠片の場合)覚醒結晶の交換に必要な欠片の数が2,4,6,8,10のいずれでもない
         ・(欠片の場合)detailに20より大きい値を与えている
