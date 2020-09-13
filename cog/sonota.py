@@ -17,10 +17,18 @@ class Toaru(object):
 
     def kakera(self,want,assigment_value,detail):
         total = 0
-        want = int(want)
-        detail = 20 - int(detail)
+        try:
+            want = int(want)
+            assigment_value = int(assigment_value)
+            detail = 20 - int(detail)
+        except ValueError:
+            embed = self.miss()
+            return embed
+        if assigment_value > 20:
+            embed = self.miss()
+            return embed
         for value in self.base_value:
-            if int(assigment_value) > value:
+            if assigment_value > value:
                 continue
             while True:
                 total += value
@@ -81,7 +89,7 @@ class Toaru(object):
         ・値が数字でない
         ・適切な数字でない(コインの場合、一度の交換で5個覚醒結晶が交換されるため)
         ・(欠片の場合)覚醒結晶の交換に必要な欠片の数が2,4,6,8,10のいずれでもない
-        ・kakeraコマンドのdetailに20より大きい値を与えている
+        ・(欠片の場合)detailに20より大きい値を与えている
         """
         embed = discord.Embed(title='与えられた値が不適です',description=description,color=discord.Color.red())
         return embed
