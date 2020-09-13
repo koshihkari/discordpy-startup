@@ -47,8 +47,8 @@ class Toaru(object):
             detail = 20 - detail
         msg = f'欠片の価値：{value}\nその価値で購入できる残り個数：{detail}'
         embed = discord.Embed(title='計算結果',color=discord.Color.purple())
-        embed.add_field(name='欠片必要個数',value=total)
-        embed.add_field(name='欠片購入条件の変化',value=msg)
+        embed.add_field(name='<欠片必要個数>',value=total)
+        embed.add_field(name=<'欠片購入条件の変化>',value=msg)
         return embed
         
     def koin(self,want):
