@@ -16,8 +16,6 @@ class Toaru(object):
         self.base_value = [2,4,6,8,10]
 
     def kakera(self,want,assigment_value,detail):
-        if int(detail) > 20:
-            return self.miss()
         total = 0
         want = int(want)
         detail = 20 - int(detail)
@@ -44,8 +42,6 @@ class Toaru(object):
         embed.add_field(name='欠片必要個数',value=total)
         embed.add_field(name='欠片購入条件の変化',value=msg)
         return embed
-
-
         
     def koin(self,want):
         try:
