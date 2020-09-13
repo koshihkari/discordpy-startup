@@ -16,36 +16,33 @@ class Toaru(object):
         self.base_value = [2,4,6,8,10]
 
     def kakera(self,want,assigment_value,detail):
-        try:
-            if int(detail) > 20:
-                return self.miss()
-            total = 0
-            want = int(want)
-            detail = 20 - int(detail)
-            for value in self.base_value:
-                if int(assigment_value) > value:
-                    continue
-                while True:
-                    total += value
-                    want -= 1
-                    detail += 1
-                    if detail == 20 and value != 10:
-                        detail = 0
-                        break
-                    if want == 0:
-                        break
+        if int(detail) > 20:
+            return self.miss()
+        total = 0
+        want = int(want)
+        detail = 20 - int(detail)
+        for value in self.base_value:
+            if int(assigment_value) > value:
+                continue
+            while True:
+                total += value
+                want -= 1
+                detail += 1
+                if detail == 20 and value != 10:
+                    detail = 0
+                    break
                 if want == 0:
                     break
-            if value == 10:
-                detail = '制限なし'
-            else:
-                detail = 20 - detail
-            msg = f'欠片の価値：{value}\nその価値で購入できる残り個数：{detail}'
-            embed = discord.Embed(title='計算結果',color=discord.Color.purple())
-            embed.add_field(name='欠片必要個数',value=total)
-            embed.add_field(name='欠片購入条件の変化',value=msg)
-        except ValueError:
-            return self.miss()
+            if want == 0:
+                break
+        if value == 10:
+            detail = '制限なし'
+        else:
+            detail = 20 - detail
+        msg = f'欠片の価値：{value}\nその価値で購入できる残り個数：{detail}'
+        embed = discord.Embed(title='計算結果',color=discord.Color.purple())
+        embed.add_field(name='欠片必要個数',value=total)
+        embed.add_field(name='欠片購入条件の変化',value=msg)
         return embed
 
 
