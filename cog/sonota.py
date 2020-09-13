@@ -15,41 +15,37 @@ class Toaru(object):
     def __init__(self):
         self.base_value = [2,4,6,8,10]
 
-    def kakera(self,want,value='2',detail=None):
-        """
-        与えられた値に適した返信のメッセージを作成
-        wnat='ほしい覚醒結晶の数'
-        value='覚醒結晶一つの価値'
-        detail='valueが変わらずに購入できる数'
-        """
-        spent = 0
-        if detail is None:
-            detail = '20'
-        if not want.isdecimal() or not value.isdecimal() or not detail.isdecimal() or (value == 10 and detail is not None):
-            embed = self.miss()
-            return embed
-        if int(value) not in self.base_value:
-            embed = self.miss()
-            return embed
-        value = int(value)
-        want = int(want)
-        detail = int(detail)
-        for i in self.base_value:
-            if value > i:
-                self.base_value.remove(i)
-        for loop_value in self.base_value:
-            if loop_value == 10:
-                while want > 0:
-                    spent += loop_value
+    def kakera(self,want,assigment_value,detail):
+        try:
+            if int(detail) > 20:
+                return self.miss()
+            total = 0
+            want = int(want)
+            detail = 20 - int(detail)
+            for value in self.base_value:
+                if int(assigment_value) > value:
+                    continue
+                while True:
+                    total += value
                     want -= 1
-            else:
-                for _ in range(detail):
-                    if not want > 0:
+                    detail += 1
+                    if detail == 20 and value != 10:
+                        detail = 0
                         break
-                    spent += loop_value
-                    want -= 1
-                detail = 20
-        embed = discord.Embed(title='計算結果',description=f'必要欠片数：{spent}',color=discord.Color.blue())
+                    if want == 0:
+                        break
+                if want == 0:
+                    break
+            if value == 10:
+                detail = '制限なし'
+            else:
+                detail = 20 - detail
+            msg = f'欠片の価値：{value}\nその価値で購入できる残り個数：{detail}'
+            embed = discord.Embed(title='計算結果',color=discord.Color.purple())
+            embed.add_field(name='欠片必要個数',value=total)
+            embed.add_field(name='欠片購入条件の変化',value=msg)
+        except ValueError:
+            return self.miss()
         return embed
 
 
@@ -92,6 +88,7 @@ class Toaru(object):
         ・値が数字でない
         ・適切な数字でない(コインの場合、一度の交換で5個覚醒結晶が交換されるため)
         ・(欠片の場合)覚醒結晶の交換に必要な欠片の数が2,4,6,8,10のいずれでもない
+        ・kakeraコマンドのdetailに20より大きい値を与えている
         """
         embed = discord.Embed(title='与えられた値が不適です',description=description,color=discord.Color.red())
         return embed
@@ -171,7 +168,7 @@ class Sonota(commands.Cog):
         await ctx.send(embed=embed)
     
     @commands.command()
-    async def kakera(self,ctx,want,value='2',detail=None):
+    async def kakera(self,ctx,want=0,value=2,detail=20):
         """
         覚醒結晶のかけらの必要数を計算します。(当ってるかわからない)
         コマンド 希望する数 覚醒結晶購入に必要なかけらの数(初期設定2) かけらの価値が変わらずにいくつまで交換できるか(初期設定20)
