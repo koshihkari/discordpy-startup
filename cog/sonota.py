@@ -178,6 +178,18 @@ class Sonota(commands.Cog):
         toaru = Toaru()
         embed = toaru.kakera(want,value,detail)
         await ctx.send(embed=embed)
+        
+    @commands.command()
+    @commands.has_permissions(manage_guild=True)
+    async def clean(self,ctx):
+        def check(m):
+            return m.author != ctx.author
+        await ctx.channel.purge(check=check)
+        message = await ctx.send(f'{ctx.author.mention}以外のメッセージを削除したよ')
+        await asyncio.sleep(5)
+        await ctx.message.delete()
+        await message.delete()
+        
 
 def setup(bot):
     bot.add_cog(Sonota(bot))
