@@ -52,6 +52,9 @@ class Toaru(object):
         return embed
         
     def koin(self,want):
+        if not int(want) <= 515:
+            embed = self.miss()
+            return embed
         try:
             base = int(want) // 5
         except ValueError:
