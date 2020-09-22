@@ -24,7 +24,7 @@ class Toaru(object):
         except ValueError:
             embed = self.miss()
             return embed
-        if detail > 20 or want > 600 or not assigment_value in self.base_value:
+        if detail > 20 or want > 515 or not assigment_value in self.base_value:
             embed = self.miss()
             return embed
         for value in self.base_value:
@@ -52,7 +52,7 @@ class Toaru(object):
         return embed
         
     def koin(self,want):
-        if not int(want) <= 515:
+        if not int(want) <= 660:
             embed = self.miss()
             return embed
         try:
