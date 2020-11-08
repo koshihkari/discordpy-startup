@@ -106,6 +106,7 @@ class WeatherSearch():
         url = 'https://rss-weather.yahoo.co.jp/rss/days/4410.xml'
         responce = requests.get(url)
         if responce.status_code != 200:
+            print('status_code:', responce.status_code)
             return None
         soup = BeautifulSoup(responce.text,'html.parser')
         week_date = soup.find_all('title')
