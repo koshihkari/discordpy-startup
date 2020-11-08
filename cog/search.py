@@ -52,7 +52,8 @@ class SearchCog(commands.Cog):
             index = int(base_index.content) - 1
             try:
                 wiki_page = wikipedia.page(search[index])
-            except Exception:
+            except Exception as e:
+                print(e)
                 responce_word = 'エラーだよ！'
             else:
                 wiki_content = wiki_page.content
