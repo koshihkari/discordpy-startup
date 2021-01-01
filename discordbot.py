@@ -15,7 +15,7 @@ INITIAL_EXTENSIONS = [
     'cog.search',
     'cog.game',
     'cog.sonota',
-    'main_jinro.py'
+    'cog.main_jinro'
     ]
 
 # クラスの定義。ClientのサブクラスであるBotクラスを継承。
