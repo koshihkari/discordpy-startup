@@ -1,5 +1,5 @@
-from embed_maker import EmbedNotification
-from position import Wolf, Villager, Diviner, Madman, Knight, Medium
+from cog.jinro_game.embed_maker import EmbedNotification
+from cog.jinro_game.position import Wolf, Villager, Diviner, Madman, Knight, Medium
 
 import discord
 
