@@ -199,7 +199,7 @@ class Sonota(commands.Cog):
         url = "https://discord.com/api/oauth2/authorize?client_id=720137311186059275&permissions=1074097216&scope=bot"
         embed = discord.Embed(
             title='Botの招待',
-            description = f'Botの招待は[こちら]{(url)}',
+            description = f'Botの招待は [こちら]{(url)}',
             color = discord.Color.red()
         )
         await ctx.send(embed=embed)
