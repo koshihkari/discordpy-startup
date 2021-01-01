@@ -1,8 +1,8 @@
-from embed_maker import EmbedNotification
-from gamemaster import GameMaster
-from template import Template
-import position
-from user import User
+from jinro_game.embed_maker import EmbedNotification
+from jinro_game.gamemaster import GameMaster
+from jinro_game.template import Template
+from jinro_game import position
+from jinro_game.user import User
 
 import asyncio
 
