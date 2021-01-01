@@ -1,8 +1,8 @@
-from cogs.jinro_game.embed_maker import EmbedNotification
-from cogs.jinro_game.gamemaster import GameMaster
-from cogs.jinro_game.template import Template
-from cogs.jinro_game.position import PositionMaster
-from cogs.jinro_game.user import User
+from cog.jinro_game.embed_maker import EmbedNotification
+from cog.jinro_game.gamemaster import GameMaster
+from cog.jinro_game.template import Template
+from cog.jinro_game.position import PositionMaster
+from cog.jinro_game.user import User
 
 import asyncio
 
