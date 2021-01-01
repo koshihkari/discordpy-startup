@@ -1,4 +1,4 @@
-from embed_maker import EmbedNotification
+from cog.jinro_game.embed_maker import EmbedNotification
 
 import random
 
