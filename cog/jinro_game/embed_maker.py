@@ -1,4 +1,4 @@
-from user import User
+from cog.jinro_game.user import User
 
 import discord
 
