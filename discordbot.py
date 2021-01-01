@@ -14,7 +14,8 @@ token = os.environ['DISCORD_BOT_TOKEN']
 INITIAL_EXTENSIONS = [
     'cog.search',
     'cog.game',
-    'cog.sonota'
+    'cog.sonota',
+    'main_jinro.py'
     ]
 
 # クラスの定義。ClientのサブクラスであるBotクラスを継承。
