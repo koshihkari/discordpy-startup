@@ -25,7 +25,7 @@ class Main(commands.Cog):
     @commands.command()
     async def jinro(self, ctx, decide='auto'):
         turn = 1
-        player_list = [ctx.author, ctx.author, ctx.author, ctx.author]
+        player_list = [ctx.author]
         situation = '募集中'
         recruit_content = 'このメッセージに👍をリアクションで参加、👎で参加をキャンセル、⭐で募集締め切り\n(10分放置するとゲームが破棄されます)'
         recruit = await ctx.send(content=recruit_content, embed=make_embed.recruit(situation, player_list, gamemaster))
