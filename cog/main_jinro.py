@@ -1,8 +1,8 @@
-from jinro_game.embed_maker import EmbedNotification
-from jinro_game.gamemaster import GameMaster
-from jinro_game.template import Template
-from jinro_game import position
-from jinro_game.user import User
+from jinro_game import embed_maker.EmbedNotification
+from jinro_game import gamemaster.GameMaster
+from jinro_game import template.Template
+from jinro_game import position.PositionMaster
+from jinro_game import user.User
 
 import asyncio
 
@@ -12,7 +12,7 @@ from discord.ext import commands
 
 make_embed = EmbedNotification()
 gamemaster = GameMaster()
-positionmaster = position.PositionMaster()
+positionmaster = PositionMaster()
 
 
 
