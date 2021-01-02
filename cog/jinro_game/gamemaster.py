@@ -161,16 +161,6 @@ class GameMaster():
                 break
         return killer
 
-    def check_position(self, target_list, index):
-        """占い結果"""
-        embed = discord.Embed(
-            title = '占い結果',
-            description = f'結果は・・・**{target_list[index].position.name}**！！',
-            color = discord.Color.purple()
-            # color = target_list[index].position.color
-        )
-        return embed
-
     def will_received(self, target_list, index, psychic):
         """人狼と騎士の対象を保持します"""
         if psychic.position.name == '人狼':
