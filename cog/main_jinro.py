@@ -168,7 +168,7 @@ class Main(commands.Cog):
                     await ctx.send('ゲームを終了します')
                     return
                 if psychic.position.name == '占い師' or psychic.position.name == '霊媒師':
-                    embed = gamemaster.check_position(psychic_target_list, int(target_index.content)-1)
+                    embed = make_embed.check_position(psychic_target_list, int(target_index.content)-1)
                     await psychic.discord_user.dm_channel.send(embed=embed)
                 else: # name == '人狼' or name == '騎士'
                     gamemaster.will_received(psychic_target_list, int(target_index.content)-1, psychic)
