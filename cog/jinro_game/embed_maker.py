@@ -57,6 +57,13 @@ class EmbedNotification():
         description = f"\n".join([str(index) + '：' + name for index, name in enumerate(name_list, 1)])
         color = discord.Color.magenta()
         return self.make(title, description, color)
+    
+    def check_position(self, target_list, index):
+        target_position = target_list[index]
+        title = '占い結果'
+        description = f'結果は・・・**{target_position.name}**！！'
+        color = target_position.color
+        return self.make(title, description, color)
 
     def psychic_target(self, psychic, target_list):
         title = psychic.position.ability_title + 'を選択'
