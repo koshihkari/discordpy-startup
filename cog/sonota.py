@@ -150,19 +150,19 @@ class WeatherSearch():
 class Sonota(commands.Cog):
     def __init__(self,bot):
         self.bot = bot
-#     @commands.command()
-#     async def weather(self,ctx):
-#         global timeout
-#         weather_search = WeatherSearch()
-#         week_date = weather_search.search_weather(timeout)
-#         timeout = False
-#         if week_date is None:
-#             embed = weather_search.wrong()
-#             await ctx.send(embed=embed)
-#         embed = weather_search.properly(week_date)
-#         await ctx.send(embed=embed)
-#         await asyncio.sleep(5)
-#         timeout = True
+    @commands.command()
+    async def weather(self,ctx):
+        global timeout
+        weather_search = WeatherSearch()
+        week_date = weather_search.search_weather(timeout)
+        timeout = False
+        if week_date is None:
+            embed = weather_search.wrong()
+        else:
+            embed = weather_search.properly(week_date)
+        await ctx.send(embed=embed)
+        await asyncio.sleep(5)
+        timeout = True
         
     @commands.command()
     async def koin(self,ctx,want):
@@ -194,15 +194,15 @@ class Sonota(commands.Cog):
 #         await ctx.message.delete()
 #         await message.delete()
         
-    @commands.command()
-    async def invite(self, ctx):
-        url = "https://discord.com/api/oauth2/authorize?client_id=720137311186059275&permissions=1074097216&scope=bot"
-        embed = discord.Embed(
-            title='Botの招待',
-            description = f'Botの招待は [こちら]({url})',
-            color = discord.Color.red()
-        )
-        await ctx.send(embed=embed)
+#     @commands.command()
+#     async def invite(self, ctx):
+#         url = "https://discord.com/api/oauth2/authorize?client_id=720137311186059275&permissions=1074097216&scope=bot"
+#         embed = discord.Embed(
+#             title='Botの招待',
+#             description = f'Botの招待は [こちら]({url})',
+#             color = discord.Color.red()
+#         )
+#         await ctx.send(embed=embed)
         
 
 def setup(bot):
