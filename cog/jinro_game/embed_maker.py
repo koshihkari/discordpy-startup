@@ -59,7 +59,7 @@ class EmbedNotification():
         return self.make(title, description, color)
     
     def check_position(self, target_list, index):
-        target_position = target_list[index]
+        target_position = target_list[index].position
         title = '占い結果'
         description = f'結果は・・・**{target_position.name}**！！'
         color = target_position.color
