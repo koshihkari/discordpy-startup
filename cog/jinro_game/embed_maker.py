@@ -29,10 +29,14 @@ class EmbedNotification():
         color = position.color
         return self.make(title, description, color)
     
-    def will_position(self, will_dict):
+    def will_position(self, will_dict, notification=False):
         will = ''
         for key, value in will_dict.items():
-            will += f'{key}：{value}　'
+            will += f'{key}：{value}'
+            if notification:
+                will += '\n'
+            else:
+                will += '　'
         return will
 
     def position_field(self, embed, index, players, template):
@@ -56,6 +60,15 @@ class EmbedNotification():
         color = user.position.color
         embed = self.make(title, description, color)
         embed.add_field(name='役職の説明', value=user.position.explanation, inline=False)
+        return embed
+    
+    def whole_notification(self, template):
+        title = '通知'
+        description = '役職の配布が完了しました'
+        color = discord.Color.green()
+        embed = self.make(title, description, color)
+        value = self.will_position(template.position_dict, True)
+        embed.add_field(name='役職数', value=value)
         return embed
 
     def vote(self, name_list):
