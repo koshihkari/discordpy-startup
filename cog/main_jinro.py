@@ -134,6 +134,7 @@ class Main(commands.Cog):
                     break
                 elif len(will_kill_list) > 1 and (num == 2 or len(voter_list) == 0):
                     await ctx.send('投票の結果、処刑は行わないことになりました')
+                    break
                 else:
                     await ctx.send('決選投票になりました、再度投票をしてください')
                     voter_list = [voter for voter in survivor_list if not voter in will_kill_list]
