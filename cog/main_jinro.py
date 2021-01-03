@@ -114,8 +114,7 @@ class Main(commands.Cog):
                 user.vote_count_reset()
             for num in range(3):
                 """投票"""
-                #決選投票時、投票者が存在しないときにスキップする
-                if len(voter_list) == 0:
+                if len(survivor_list) == 2:
                     continue
                 for index, user in enumerate(voter_list):
                     gamemaster.first_vote_remove(num, target_list, user)
@@ -135,7 +134,7 @@ class Main(commands.Cog):
                     killed_user.killed()
                     await ctx.send(f'投票の結果、**{killed_user.name}**が処刑されました')
                     break
-                elif len(will_kill_list) > 1 and num == 2:
+                elif len(will_kill_list) > 1 and (num == 2 or num == 0):
                     await ctx.send('投票の結果、処刑は行わないことになりました')
                 else:
                     await ctx.send('決選投票になりました、再度投票をしてください')
