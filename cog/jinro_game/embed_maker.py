@@ -28,6 +28,12 @@ class EmbedNotification():
         description = position.explanation
         color = position.color
         return self.make(title, description, color)
+    
+    def will_position(self, will_dict):
+        will = ''
+        for key, value in will_dict.items():
+            will += f'{key}：{value}　'
+        return will
 
     def position_field(self, embed, index, players, template):
         embed.add_field(
@@ -37,7 +43,7 @@ class EmbedNotification():
         )
         embed.add_field(
             name = '総役職数',
-            value = f'現在の総役職数：{template.sum_position()}\n総プレイヤー数：{players}',
+            value = f'総プレイヤー数：{players}\n現在の総役職数：{template.sum_position()}\n{self.will_position(template.position_dict)}',
             inline = False
         )
     
