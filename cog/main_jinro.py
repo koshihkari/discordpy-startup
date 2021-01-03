@@ -82,7 +82,6 @@ class Main(commands.Cog):
                     break
         # 役職の配布
                 positions = positionmaster.manual_make_positions(template.position_dict)
-                print(positions)
         else:
             positions = gamemaster.makePositionList(player_list, positionmaster.make_position_list(len(user_list)))
         gamemaster.distribute(user_list, positions)
@@ -97,7 +96,7 @@ class Main(commands.Cog):
                 wolf_member_name = f"\n".join(name for name in list(map(user.playerName, wolf_list)))
                 await user.discord_user.dm_channel.send(f'仲間の人狼は{wolf_member_name}')
                 wolf_list.append(user)
-        await ctx.send('役職の通達が完了しました、処刑に向けて話を進めてください')
+        await ctx.send(embed=make_embed.whole_notification(template))
         await asyncio.sleep(20)
 
         while True:
