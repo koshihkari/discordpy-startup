@@ -96,7 +96,7 @@ class Main(commands.Cog):
                 wolf_member_name = f"\n".join(name for name in list(map(user.playerName, wolf_list)))
                 await user.discord_user.dm_channel.send(f'仲間の人狼は{wolf_member_name}')
                 wolf_list.append(user)
-        await ctx.send(embed=make_embed.whole_notification(template))
+        await ctx.send(embed=make_embed.whole_notification(positions))
         await asyncio.sleep(20)
 
         while True:
