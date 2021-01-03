@@ -65,7 +65,7 @@ class EmbedNotification():
     
     def whole_notification(self, position_list):
         title = '通知'
-        description = '役職の配布が完了しました'
+        description = '役職の配布が完了しました\n処刑投票に向けて話し合いを開始してください'
         color = discord.Color.green()
         embed = self.make(title, description, color)
         value = self.will_position(Counter(position_list), True)
