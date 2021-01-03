@@ -114,7 +114,10 @@ class Main(commands.Cog):
             for user in user_list:
                 user.vote_count_reset()
             for num in range(3):
-                #投票します
+                """投票"""
+                #決選投票時、投票者が存在しないときにスキップする
+                if len(voter_list) == 0:
+                    continue
                 for index, user in enumerate(voter_list):
                     gamemaster.first_vote_remove(num, target_list, user)
                     name_list = [target.name for target in target_list]
