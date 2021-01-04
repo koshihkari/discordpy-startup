@@ -132,7 +132,7 @@ class GameMaster():
         """死亡者リストを作成します"""
         return [user for user in user_list if user.dead]
     
-    def make_wolf_team(user_list):
+    def make_wolf_team(self, user_list):
         return [user for user in user_list if user.position.beWolf or user.position.name == '狂人']
     
     def I_am_wolf(self, user):
