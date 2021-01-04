@@ -34,10 +34,11 @@ class EmbedNotification():
     def will_position(self, will_dict, notification=False):
         will = ''
         for key, value in will_dict.items():
+            will += f'{key}：{value}'
             if notification:
-                will += f'{key.name}：{value}\n'
+                will += '\n'
             else:
-                will += f'{key}：{value}　'
+                will += '　'
         return will
 
     def position_field(self, embed, index, players, template):
@@ -68,7 +69,7 @@ class EmbedNotification():
         description = '役職の配布が完了しました\n処刑投票に向けて話し合いを開始してください'
         color = discord.Color.green()
         embed = self.make(title, description, color)
-        value = self.will_position(Counter(position_list), True)
+        value = self.will_position(Counter(list(map(lambda position: position.getName(), position_list))), True)
         embed.add_field(name='役職数', value=value)
         return embed
 
