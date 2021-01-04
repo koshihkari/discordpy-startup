@@ -23,6 +23,9 @@ class Position():
 
     def getHaveAbility(self):
         return self.ability
+    
+    def getName(self):
+        return self.name
 
 
 #村人
