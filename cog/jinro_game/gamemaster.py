@@ -132,6 +132,9 @@ class GameMaster():
         """死亡者リストを作成します"""
         return [user for user in user_list if user.dead]
     
+    def make_wolf_team(user_list):
+        return [user for user in user_list if user.position.beWolf or user.position.name == '狂人']
+    
     def I_am_wolf(self, user):
         return user.position.beWolf
 
@@ -196,9 +199,10 @@ class GameMaster():
     def winner_judge(self, user_list, wolf_list):
         survive_wolf_list = [wolf for wolf in wolf_list if not wolf.dead]
         if len(survive_wolf_list) == 0:
-            return [user for user in user_list if not user.position.beWolf], '村人'
+            return [user for user in user_list if not user.position.beWolf or not user.position.name == '狂人'], '村人'
         else:
-            return wolf_list, '人狼'
+            wolf_team_list = self.make_wolf_team(user_list)
+            return wolf_team_list, '人狼'
         
     def winner(self, winners):
         description = ''
