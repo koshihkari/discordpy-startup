@@ -113,6 +113,8 @@ class Main(commands.Cog):
             for user in user_list:
                 user.vote_count_reset()
             for num in range(3):
+                if len(survivor_list) == 2:
+                    break
                 """投票"""
                 for index, user in enumerate(voter_list):
                     gamemaster.first_vote_remove(num, target_list, user)
@@ -132,7 +134,7 @@ class Main(commands.Cog):
                     killed_user.killed()
                     await ctx.send(f'投票の結果、**{killed_user.name}**が処刑されました')
                     break
-                elif len(will_kill_list) > 1 and (num == 2 or len(voter_list) == 0):
+                elif len(will_kill_list) > 1 and num == 2:
                     await ctx.send('投票の結果、処刑は行わないことになりました')
                     break
                 else:
@@ -176,7 +178,7 @@ class Main(commands.Cog):
             await ctx.send(embed=gamemaster.daybreak())
             await ctx.send(embed=make_embed.situation(user_list, gamemaster))
             turn += 1
-            await asyncio.sleep(30)
+            await asyncio.sleep(10)
         winners, team_name = gamemaster.winner_judge(user_list, wolf_list)
         await ctx.send(embed=make_embed.win(team_name, winners, gamemaster))
 
