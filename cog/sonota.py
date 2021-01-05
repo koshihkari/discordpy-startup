@@ -194,15 +194,11 @@ class Sonota(commands.Cog):
 #         await ctx.message.delete()
 #         await message.delete()
         
-     @commands.command()
-     async def invite(self, ctx):
-         url = "https://discord.com/api/oauth2/authorize?client_id=720137311186059275&permissions=1074097216&scope=bot"
-         embed = discord.Embed(
-             title='Botの招待',
-             description = f'Botの招待は [こちら]({url})',
-             color = discord.Color.red()
-         )
-         await ctx.send(embed=embed)
+    @commands.command()
+    async def invite(self, ctx):
+        url = "https://discord.com/api/oauth2/authorize?client_id=720137311186059275&permissions=1074097216&scope=bot"
+        embed = discord.Embed(title='Botの招待',description=f'Botの招待は [こちら]({url})',color = discord.Color.red())
+        await ctx.send(embed=embed)
         
 
 def setup(bot):
