@@ -23,9 +23,8 @@ class GameMaster():
         """募集メッセージへのリアクションに対して動作します"""
         player_list = players.copy()
         if emoji == '👍':
-            player_list.append(user)
-#             if not user in player_list:
-#                 player_list.append(user)
+            if not user in player_list:
+                player_list.append(user)
             return player_list, False
         elif emoji == '👎':
             if user in player_list:
